@@ -15,7 +15,7 @@ import * as chartConfig from '@/components/Charts/chart.config.js'
 import LineChart from '@/components/Charts/LineChart.vue'
 import SectionMain from '@/components/SectionMain.vue'
 import CardBoxWidget from '@/components/CardBoxWidget.vue'
-import CardBox from '@/components/CardBox.vue'
+import CardBoxCreation from '@/components/CardBoxCreation.vue'
 import TableSampleClients from '@/components/TableSampleClients.vue'
 import NotificationBar from '@/components/NotificationBar.vue'
 import BaseButton from '@/components/BaseButton.vue'
@@ -37,22 +37,22 @@ const transactionBarItems = computed(() => mainStore.creations)
       </SectionTitleLineWithButton>
 
       <div class="grid grid-cols-1">
-        <CardBoxTransaction
+        <CardBoxCreation
             v-for="(transaction, index) in transactionBarItems"
-            :key="index"
-            :amount="transaction.name"
+            :name=transaction.name
+            :format=transaction.format
+            :tags=transaction.tags
+            :description=transaction.description
+            :shops=transaction.shops
+            :edition=transaction.edition
+            :official=transaction.official
+            :authors=transaction.authors
+            :order=index
           />
       </div>
 
-      <SectionTitleLineWithButton :icon="mdiAccountMultiple" title="Clients" />
 
-      <NotificationBar color="info" :icon="mdiMonitorCellphone">
-        <b>Responsive table.</b> Collapses on mobile
-      </NotificationBar>
 
-      <CardBox has-table>
-        <TableSampleClients />
-      </CardBox>
     </SectionMain>
   </LayoutPublic>
 </template>

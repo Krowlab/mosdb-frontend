@@ -5,55 +5,44 @@ import CardBox from '@/components/CardBox.vue'
 import BaseLevel from '@/components/BaseLevel.vue'
 import PillTag from '@/components/PillTag.vue'
 import IconRounded from '@/components/IconRounded.vue'
+import { mdiGreenhouse } from '@mdi/js'
 
 const props = defineProps({
-  amount: {
-    type: Number,
-    required: true
-  },
-  date: {
-    type: String,
-    required: true
-  },
-  business: {
-    type: String,
-    required: true
-  },
-  type: {
-    type: String,
-    required: true
-  },
   name: {
     type: String,
-    required: true
+    required: false
   },
-  account: {
+  format: {
     type: String,
+    required: false
+  },
+  tags: {
+    type: String,
+    required: false
+  },
+  description: {
+    type: String,
+    required: false
+  },
+  shops: {
+    type: String,
+    required: false
+  },
+  edition: {
+    type: String,
+    required: false
+  },
+  official: {
+    type: String,
+    required: false
+  },
+  authors: {
+    type: String,
+    required: false
+  },
+  order: {
+    type: Number,
     required: true
-  }
-})
-
-const icon = computed(() => {
-  if (props.type === 'withdrawal') {
-    return {
-      icon: mdiCashMinus,
-      type: 'danger'
-    }
-  } else if (props.type === 'deposit') {
-    return {
-      icon: mdiCashPlus,
-      type: 'success'
-    }
-  } else if (props.type === 'invoice') {
-    return {
-      icon: mdiReceipt,
-      type: 'warning'
-    }
-  }
-
-  return {
-    icon: mdiCreditCardOutline,
-    type: 'info'
   }
 })
 </script>
@@ -62,21 +51,27 @@ const icon = computed(() => {
   <CardBox class="mb-6 last:mb-0">
     <BaseLevel>
       <BaseLevel type="justify-start">
-        <IconRounded :icon="icon.icon" :color="icon.type" class="md:mr-6" />
         <div class="text-center space-y-1 md:text-left md:mr-6">
-          <h4 class="text-xl">${{ amount }}</h4>
+          <h4 class="text-xl">{{ name }}
+            <sub>{{ edition }}</sub>
+          </h4>
           <p class="text-gray-500 dark:text-slate-400">
-            <b>{{ date }}</b> via {{ business }}
+            by <b>{{ authors }}</b> sold on {{ shops }}
           </p>
+          <PillTag
+            // for="'(tag, index) in tags'"
+          :label=tag
+          :color="'danger'"
+          :icon=null
+          :small=false
+          :outline=false
+          />
         </div>
       </BaseLevel>
       <div class="text-center md:text-right space-y-2">
         <p class="text-sm text-gray-500">
-          {{ name }}
+          {{ description }}
         </p>
-        <div>
-          <PillTag :color="icon.type" :label="type" small />
-        </div>
       </div>
     </BaseLevel>
   </CardBox>
