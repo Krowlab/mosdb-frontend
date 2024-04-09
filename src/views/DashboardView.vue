@@ -8,8 +8,7 @@ import {
   mdiMonitorCellphone,
   mdiReload,
   mdiGithub,
-  mdiChartPie,
-  mdiRocket
+  mdiChartPie
 } from '@mdi/js'
 import * as chartConfig from '@/components/Charts/chart.config.js'
 import LineChart from '@/components/Charts/LineChart.vue'
@@ -21,7 +20,7 @@ import NotificationBar from '@/components/NotificationBar.vue'
 import BaseButton from '@/components/BaseButton.vue'
 import CardBoxTransaction from '@/components/CardBoxTransaction.vue'
 import CardBoxClient from '@/components/CardBoxClient.vue'
-import LayoutPublic from '@/layouts/LayoutPublic.vue'
+import LayoutAuthenticated from '@/layouts/LayoutAuthenticated.vue'
 import SectionTitleLineWithButton from '@/components/SectionTitleLineWithButton.vue'
 import SectionBannerStarOnGitHub from '@/components/SectionBannerStarOnGitHub.vue'
 
@@ -43,9 +42,9 @@ const transactionBarItems = computed(() => mainStore.history)
 </script>
 
 <template>
-  <LayoutPublic>
+  <LayoutAuthenticated>
     <SectionMain>
-      <SectionTitleLineWithButton :icon="mdiRocket" title="Works" main>
+      <SectionTitleLineWithButton :icon="mdiChartTimelineVariant" title="Overview" main>
         <BaseButton
           href="https://github.com/justboil/admin-one-vue-tailwind"
           target="_blank"
@@ -133,5 +132,5 @@ const transactionBarItems = computed(() => mainStore.history)
         <TableSampleClients />
       </CardBox>
     </SectionMain>
-  </LayoutPublic>
+  </LayoutAuthenticated>
 </template>
