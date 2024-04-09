@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@mdi/js": "^7.0.96",
+    "appwrite": "^14.0.0",
     "axios": "^1.5.0",
     "chart.js": "^4.4.0",
     "numeral": "^2.0.6",
